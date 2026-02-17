@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import pandas as pd
 from topsis import run_topsis
 import smtplib
 from email.message import EmailMessage
@@ -10,8 +9,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
 def send_email(receiver, file_path):
-    sender = "ishitaoberoi2005@gmail.com"
-    password = "eekebugmicnjritq"
+    sender = st.secrets["EMAIL_USER"]
+    password = st.secrets["EMAIL_PASS"]
 
     msg = EmailMessage()
     msg["Subject"] = "TOPSIS Result"
